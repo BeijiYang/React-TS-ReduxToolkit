@@ -1,4 +1,4 @@
-import originAxios, { AxiosPromise } from 'axios';
+import originAxios from 'axios';
 import { message } from 'antd';
 
 const axios = originAxios.create({

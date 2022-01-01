@@ -1,21 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from './routers';
+import { Provider } from 'react-redux';
 
-import Hello from './components/demo/Hello';
-import HelloClass from './components/demo/HelloClass';
-import HelloHOC from './components/demo/HelloHOC';
-import HelloHooks from './components/demo/HelloHooks';
-import App from './components/App';
+import Root from './routers';
+import store from './redux/store';
 
 ReactDOM.render(
-  <React.StrictMode>
-    {/* <Hello name="TypeScript" /> */}
-    {/* <HelloClass name="TypeScript" /> */}
-    {/* <HelloHOC name="TypeScript" loading={false} /> */}
-    {/* <HelloHooks name="TypeScript" /> */}
-    {/* <App /> */}
+  <Provider store={store}>
     <Root />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );

@@ -9,9 +9,9 @@ import './App.css';
 
 const { Header, Content, Footer } = Layout;
 
-const getDefaultKey = (urlMatch: any) => urlMatch && urlMatch.url.replace('/', '') || 'employee';
+const getDefaultKey = (urlMatch: any) => urlMatch ? urlMatch.url.replace('/', '') : 'employee';
 
-const App = ({match}: any) => (
+const App = ({ match }: any) => (
   <ConfigProvider locale={zh_CN}>
     <Layout>
       <Header>
