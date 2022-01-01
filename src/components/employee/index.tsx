@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React from 'react';
 import { Table } from 'antd';
 import { connect } from 'react-redux';
 import { bindActionCreators, Dispatch } from 'redux';
@@ -15,26 +15,24 @@ interface Props {
   onGetEmployee(param: EmployeeRequest): void;
   employeeList: EmployeeResponse
 }
-class Employee extends Component<Props> {
+const Employee = (props: Props) => {
 
-  getTotal = () => {
-    return <p>员工人数： {this.props.employeeList?.length || 0}</p>
+  const getTotal = () => {
+    return <p>员工人数： {props.employeeList?.length || 0}</p>
   }
   
-  render() {
-    const { onGetEmployee, employeeList } = this.props;
-    return (
-      <>
-        <QueryForm getData={onGetEmployee} />
-        {this.getTotal()}
-        <Table
-          columns={employeeColumns}
-          dataSource={employeeList}
-          className="table"
-        />
-      </>
-    );
-  }
+  const { onGetEmployee, employeeList } = props;
+  return (
+    <>
+      <QueryForm getData={onGetEmployee} />
+      {getTotal()}
+      <Table
+        columns={employeeColumns}
+        dataSource={employeeList}
+        className="table"
+      />
+    </>
+  );
 }
 
 const mapStateToProps = (state: any) => ({

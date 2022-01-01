@@ -18,7 +18,7 @@ const initialState: State = {
   employeeList: undefined
 }
 
-export function getEmployee(param: EmployeeRequest) {
+export const getEmployee = (param: EmployeeRequest) => {
   return (dispatch: Dispatch) => {
     get(GET_EMPLOYEE_URL, param)
       .then(res => {
@@ -30,7 +30,7 @@ export function getEmployee(param: EmployeeRequest) {
   };
 }
 
-export default function(state = initialState, action: Action) {
+export default (state = initialState, action: Action) => {
   switch (action.type) {
     case GET_EMPLOYEE:
       return {
