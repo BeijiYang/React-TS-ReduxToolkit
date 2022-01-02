@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux'
 import { Form, Input, Select, Button } from 'antd';
 import { FormProps } from 'antd/lib/form';
 
+import { getAll } from '../../redux/employee/slice';
 import { EmployeeRequest } from '../../interface/employee';
 
 const { Option } = Select;
@@ -13,6 +15,8 @@ interface Props extends FormProps {
 const QueryForm = (props: Props) => {
   const [name, setName] = useState('');
   const [departmentId, setDepartmentId] = useState<number | undefined>(undefined);
+
+  const dispatch = useDispatch()
 
   useEffect(() => {
     queryEmployee({
@@ -37,7 +41,7 @@ const QueryForm = (props: Props) => {
   }
 
   const queryEmployee = (param: EmployeeRequest) => {
-    props.getData(param);
+    dispatch(getAll(param))
   }
   
   return (
